@@ -35,21 +35,22 @@ El documento completo de la tesis puede consultarse aquí: **\[enlace a tu TFM\]
 ---
 
 ## Estructura del repositorio
-.
-├── brokers/ # Configuración de contenedores Mosquitto
-│ ├── docker-compose.yml
-│ └── mosquitto.conf
-├── vm-brokers-scripts/ # Scripts que se ejecutan en la VM-BROKERS
-│ ├── run_all_monitors.sh
-│ ├── monitor_brokers_csv.sh
-│ └── monitor_brokers_txt.sh
-├── vm-ipvs-scripts/ # Scripts que se ejecutan en las VM-IPVS
-│ ├── setup_ipvs.sh
-│ ├── monitor_ipvs.sh
-│ ├── run_mqtt_pub.sh
-│ └── run_mqtt_sub.sh
-└── README.md
 
+```text
+.
+├── brokers/                 # Contenedores Mosquitto
+│   ├── docker-compose.yml
+│   └── mosquitto.conf
+├── vm-brokers-scripts/      # Scripts para la VM-BROKERS
+│   ├── run_all_monitors.sh
+│   ├── monitor_brokers_csv.sh
+│   └── monitor_brokers_txt.sh
+├── vm-ipvs-scripts/         # Scripts para las VM-IPVS
+│   ├── setup_ipvs.sh
+│   ├── monitor_ipvs.sh
+│   ├── run_mqtt_pub.sh
+│   └── run_mqtt_sub.sh
+└── README.md
 
 ### Scripts para **VM-BROKERS**
 
