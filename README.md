@@ -37,27 +37,37 @@ Contiene todos los **scripts, configuraciones y artefactos** empleados en la PoC
 
 ```text
 .
-├── brokers/                     # Contenedores Mosquitto
+├── brokers/                         # Contenedores Mosquitto
 │   ├── broker1/
-│   │   └── mosquitto.conf       # Configuración específica del Broker 1
+│   │   └── mosquitto.conf           # Configuración específica del Broker 1
 │   ├── broker2/
-│   │   └── mosquitto.conf       # Configuración específica del Broker 2
-│   ├── broker3/
-│   │   └── mosquitto.conf       # Configuración específica del Broker 3
-│   └── docker-compose.yml       # Orquesta los tres brokers y sus redes
+│   │   └── mosquitto.conf           # Configuración específica del Broker 2
+│   ├── broker3/                    
+│   │   └── mosquitto.conf           # Configuración específica del Broker 3
+│   ├── rules.v4                     # Reglas iptables persistentes de la VM-BROKERS
+│   └── docker-compose.yml           # Orquesta los tres brokers y sus redes
 │
-├── vm-brokers-scripts/          # Scripts para la VM-BROKERS
+├── ipvs1/                           # Config. completa de la VM-IPVS1
+│   ├── ipvs_lc.rules                # Reglas del balanceador (Least-Connection / SNAT)
+│   └── rules.v4                     # Reglas iptables para NAT y cadena FORWARD
+│   
+│   #  ➟  Las reglas de **IPVS2** son análogas; solo cambian las IP y
+│   #     no incluyen las entradas exclusivas del escenario centralizado.
+│
+├── vm-brokers-scripts/              # Scripts para la VM-BROKERS
 │   ├── run_all_monitors.sh
 │   ├── monitor_brokers_csv.sh
 │   └── monitor_brokers_txt.sh
 │
-├── vm-ipvs-scripts/             # Scripts para las VM-IPVS
+├── vm-ipvs-scripts/                 # Scripts para las VM-IPVS
 │   ├── setup_ipvs.sh
 │   ├── monitor_ipvs.sh
 │   ├── run_mqtt_pub.sh
 │   └── run_mqtt_sub.sh
 │
 └── README.md
+
+
 ```
 
 ### Scripts para **VM-BROKERS**
@@ -88,7 +98,7 @@ Contiene todos los **scripts, configuraciones y artefactos** empleados en la PoC
 
 | Componente | Versión mínima |
 |------------|----------------|
-| **SO**     | Ubuntu 24.04 LTS (probado) |
+| **SO**     | Ubuntu 24.04 LTS |
 | **Contenedores** | `docker` + `docker-compose` |
 | **Load Balancer** | `ipvsadm` |
 | **Benchmark** | `emqtt-bench` (incluye Dockerfile) |

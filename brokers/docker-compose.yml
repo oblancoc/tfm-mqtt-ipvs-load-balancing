@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  broker1:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto_broker1
+    mem_limit: 128m
+    cpus: 0.25
+    networks:
+      ipvlan_net:
+        ipv4_address: 10.2.0.20
+    volumes:
+      - ./broker1/mosquitto.conf:/mosquitto/config/mosquitto.conf
+     # - /home/azureuser/mosquitto:/var/log/mosquitto  # Mapea el directorio directamente
+    restart: unless-stopped
+
+  broker2:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto_broker2
+    mem_limit: 128m
+    cpus: 0.25
+    networks:
+      ipvlan_net:
+        ipv4_address: 10.2.0.21
+    volumes:
+      - ./broker2/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      #- /home/azureuser/mosquitto:/var/log/mosquitto  # Mapea el directorio directamente
+    restart: unless-stopped
+
+  broker3:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto_broker3
+    mem_limit: 128m
+    cpus: 0.25
+    networks:
+      ipvlan_net:
+        ipv4_address: 10.2.0.22
+    volumes:
+      - ./broker3/mosquitto.conf:/mosquitto/config/mosquitto.conf
+     # - /home/azureuser/mosquitto:/var/log/mosquitto  # Mapea el directorio directamente
+    restart: unless-stopped
+
+networks:
+  ipvlan_net:
+    external: true

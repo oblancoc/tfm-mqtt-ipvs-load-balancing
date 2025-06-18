@@ -1,0 +1,4 @@
+-A -t vm-ipvs1.internal.cloudapp.net:1883 -s lc
+-a -t vm-ipvs1.internal.cloudapp.net:1883 -r 10.2.0.20:1883 -m -w 1
+-a -t vm-ipvs1.internal.cloudapp.net:1883 -r 10.2.0.21:1883 -m -w 1
+-a -t vm-ipvs1.internal.cloudapp.net:1883 -r 10.2.0.22:1883 -m -w 1
