@@ -51,7 +51,7 @@ El documento completo de la tesis puede consultarse aquí: **\[enlace a tu TFM\]
 │   ├── run_mqtt_pub.sh
 │   └── run_mqtt_sub.sh
 └── README.md
-```text
+```
 
 ### Scripts para **VM-BROKERS**
 
