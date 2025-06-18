@@ -26,7 +26,6 @@ El estudio concluye con **pautas de diseño prácticas** para arquitecturas MQTT
 ## Este repositorio
 
 Contiene todos los **scripts, configuraciones y artefactos** empleados en la PoC.  
-El documento completo de la tesis puede consultarse aquí: **\[enlace a tu TFM\]**
 
 ### Palabras clave
 
