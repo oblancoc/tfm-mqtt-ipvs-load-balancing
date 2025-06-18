@@ -17,7 +17,7 @@ Los resultados revelaron un hallazgo clave y contraintuitivo:
 * **Arquitectura centralizada** → ≈ 25 % de pérdida de mensajes bajo sobrecarga extrema, a pesar de equilibrar casi perfectamente las conexiones.  
 * **Arquitectura distribuida** → pérdida limitada al **14 %**, mostrando mayor resiliencia aun con un reparto menos preciso.
 
-> Un equilibrio óptimo en la capa de red/transporte (L4) **no garantiza** la máxima fiabilidad en la capa de aplicación (L7) cuando el clúster está saturado.
+> Un equilibrio óptimo en la capa de red/transporte (L4) **no siempre garantiza** la máxima fiabilidad en la capa de aplicación (L7) cuando el clúster está saturado.
 
 El estudio concluye con **pautas de diseño prácticas** para arquitecturas MQTT de alta disponibilidad.
 
@@ -38,18 +38,26 @@ El documento completo de la tesis puede consultarse aquí: **\[enlace a tu TFM\]
 
 ```text
 .
-├── brokers/                 # Contenedores Mosquitto
-│   ├── docker-compose.yml
-│   └── mosquitto.conf
-├── vm-brokers-scripts/      # Scripts para la VM-BROKERS
+├── brokers/                     # Contenedores Mosquitto
+│   ├── broker1/
+│   │   └── mosquitto.conf       # Configuración específica del Broker 1
+│   ├── broker2/
+│   │   └── mosquitto.conf       # Configuración específica del Broker 2
+│   ├── broker3/
+│   │   └── mosquitto.conf       # Configuración específica del Broker 3
+│   └── docker-compose.yml       # Orquesta los tres brokers y sus redes
+│
+├── vm-brokers-scripts/          # Scripts para la VM-BROKERS
 │   ├── run_all_monitors.sh
 │   ├── monitor_brokers_csv.sh
 │   └── monitor_brokers_txt.sh
-├── vm-ipvs-scripts/         # Scripts para las VM-IPVS
+│
+├── vm-ipvs-scripts/             # Scripts para las VM-IPVS
 │   ├── setup_ipvs.sh
 │   ├── monitor_ipvs.sh
 │   ├── run_mqtt_pub.sh
 │   └── run_mqtt_sub.sh
+│
 └── README.md
 ```
 
