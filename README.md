@@ -108,4 +108,3 @@ sudo ./setup_ipvs.sh rules/lc_default.rules
 # 4) Lanzar clientes de prueba
 ./run_mqtt_pub.sh
 ./run_mqtt_sub.sh
-
